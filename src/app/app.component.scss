@@ -28,6 +28,19 @@ $primary-color: #a89463;
         font-weight: 600;
     }
 
+    .name[data-highlightword] {
+        position: relative;
+        color: #fff;
+    }
+
+    .name[data-highlightword]::before {
+        content: attr(data-highlightword);
+        color: $primary-color;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
     .designation {
         color: #fff;
     }
@@ -124,6 +137,7 @@ ul {
     margin-top: 5%;
     color: #fff !important;
     border: 1px solid #fff !important;
+
     &:hover {
         color: $primary-color !important;
         background-color: #fff;
@@ -186,5 +200,36 @@ ul {
 
     .item-header {
         font-size: 20px !important;
+    }
+}
+
+.glowing {
+    position: relative;
+    overflow: hidden;
+}
+
+.glowing::before {
+    content: '';
+    position: absolute;
+    left: -20%;
+    top: -10%;
+    width: 0;
+    height: 100%;
+    transform: rotate(15deg) scale(1, 2);
+    box-shadow: 0 0 30px 15px $primary-color;
+    animation: button-glow 3000ms ease-in-out infinite;
+}
+
+@keyframes button-glow {
+    0% {
+        left: -20%;
+    }
+
+    50% {
+        left: 120%;
+    }
+
+    100% {
+        left: 120%;
     }
 }
